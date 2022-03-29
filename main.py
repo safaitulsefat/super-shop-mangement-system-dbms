@@ -1,11 +1,13 @@
 from customer import Customer
 from employee import Employee
-from  product import Product
+from product import Product
+from receipt import Receipt
 
 def main():
     customer = Customer()
     employee = Employee()
     product = Product()
+    receipt = Receipt()
     while True:
         print("************welcome*********")
         print()
@@ -23,7 +25,12 @@ def main():
         print("press 10 to display all product")
         print("press 11 to delete product")
         print("press 12 update product information")
-        print("press 13 exit program")
+
+        print("press 13 to insert new receipt")
+        print("press 14 to display all receipt")
+        print("press 15 to delete receipt")
+        print("press 16 update receipt information")
+        print("press 17 exit program")
         print()
         try:
             choice = int(input())
@@ -97,6 +104,34 @@ def main():
                 price = int(input("enter product price"))
                 product.insert__product(id, name, p_type, company_name, exp_date, mfg_date, bar_code, price)
             elif choice==13:
+                t_no = int(input("enter transaction no: "))
+                p_name = input("enter product name: ")
+                quantity = int(input("enter quantity : "))
+                cashier_name = input("enter cashier name: ")
+                price = int(input("enter price: "))
+                total_amount = int(input("enter product mfg date"))
+                date_time = input("enter  date_time: ")
+                p_id = int(input("enter product id"))
+                c_id = int(input("enter customer id"))
+                receipt.insert__receipt(t_no,p_name,quantity,cashier_name,price,total_amount,date_time,p_id,c_id)
+            elif choice==14:
+                receipt.display__all()
+            elif choice==15:
+                t_no = int(input("enter transaction no: "))
+                receipt.delete__receipt(t_no)
+            elif choice==16:
+                t_no = int(input("enter transaction no: "))
+                p_name = input("enter product name: ")
+                quantity = int(input("enter quantity : "))
+                cashier_name = input("enter cashier name: ")
+                price = int(input("enter price: "))
+                total_amount = int(input("enter product mfg date"))
+                date_time = input("enter  date_time: ")
+                p_id = int(input("enter product id"))
+                c_id = int(input("enter customer id"))
+                receipt.update__receipt(t_no, p_name, quantity, cashier_name, price, total_amount, date_time, p_id,
+                                        c_id)
+            elif choice==17:
                 break
             else:
                 print("invalid input")
