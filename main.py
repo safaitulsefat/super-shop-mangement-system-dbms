@@ -2,12 +2,15 @@ from customer import Customer
 from employee import Employee
 from product import Product
 from receipt import Receipt
-
+from supplier import Supplier
+from orderlist import  Orderlist
 def main():
     customer = Customer()
     employee = Employee()
     product = Product()
     receipt = Receipt()
+    supplier = Supplier()
+    orderlist = Orderlist()
     while True:
         print("************welcome*********")
         print()
@@ -30,7 +33,15 @@ def main():
         print("press 14 to display all receipt")
         print("press 15 to delete receipt")
         print("press 16 update receipt information")
-        print("press 17 exit program")
+        print("Press 17 to insert new supplier: ")
+        print("press 18 to display all supplier: ")
+        print("press 19 to delete supplier")
+        print("press 20 to update supplier information: ")
+        print("press 21 insert order")
+        print("Press 22 to display all: ")
+        print("press 23 to delete orderlist: ")
+        print("press 24 to update order list")
+        print("press 25 to exit program: ")
         print()
         try:
             choice = int(input())
@@ -129,9 +140,45 @@ def main():
                 date_time = input("enter  date_time: ")
                 p_id = int(input("enter product id"))
                 c_id = int(input("enter customer id"))
-                receipt.update__receipt(t_no, p_name, quantity, cashier_name, price, total_amount, date_time, p_id,
-                                        c_id)
+                receipt.update__receipt(t_no, p_name, quantity, cashier_name, price, total_amount, date_time, p_id,c_id)
+
             elif choice==17:
+                s_id = int(input("enter customer id: "))
+                s_name = input("enter customer name: ")
+                address = input("enter customer address: ")
+                contractno = input("enter  customer contract no: ")
+                supplier.insert__supplier(s_id,s_name,address,contractno)
+            elif choice==18:
+                supplier.display__all()
+            elif choice==19:
+                s_id = int(input("enter supplier id"))
+                supplier.delete__supplier(s_id)
+            elif choice==20:
+                s_id = int(input("enter customer id: "))
+                s_name = input("enter customer name: ")
+                address = input("enter customer address: ")
+                contractno = input("enter  customer contract no: ")
+                supplier.update__supplier(s_id, s_name, address, contractno)
+            elif choice == 21:
+                o_id = int(input("enter order  id: "))
+                order_date = input("enter order date: ")
+                delivery_date = input("enter delivery date: ")
+                suplier_id = int(input("enter  supplier id: "))
+                product_id = int(input("enter product id"))
+                orderlist.insert__order(o_id, order_date, delivery_date, suplier_id, product_id)
+            elif choice == 22:
+                orderlist.display__all()
+            elif choice == 23:
+                o_id = int(input("enter supplier id"))
+                orderlist.delete_order(o_id)
+            elif choice == 24:
+                o_id = int(input("enter order  id: "))
+                order_date = input("enter order date: ")
+                delivery_date = input("enter delivery date: ")
+                suplier_id = int(input("enter  supplier id: "))
+                product_id = int(input("enter product id"))
+                orderlist.insert__order(o_id, order_date, delivery_date, suplier_id, product_id)
+            elif choice==25:
                 break
             else:
                 print("invalid input")
