@@ -4,6 +4,7 @@ from product import Product
 from receipt import Receipt
 from supplier import Supplier
 from orderlist import  Orderlist
+from shopstatus import Shopstatus
 def main():
     customer = Customer()
     employee = Employee()
@@ -11,6 +12,8 @@ def main():
     receipt = Receipt()
     supplier = Supplier()
     orderlist = Orderlist()
+    shopstatus = Shopstatus()
+
     while True:
         print("************welcome*********")
         print()
@@ -41,7 +44,13 @@ def main():
         print("Press 22 to display all: ")
         print("press 23 to delete orderlist: ")
         print("press 24 to update order list")
-        print("press 25 to exit program: ")
+        print("press 25 to search")
+        print("press 26 to join: ")
+        print("enter 27 recipt join")
+        print("enter 28 maximum salary")
+        print("enter 29 shop status")
+        print("enter 30 display shop status")
+        print("exit")
         print()
         try:
             choice = int(input())
@@ -97,12 +106,12 @@ def main():
                 exp_date = input("enter product exp date name: ")
                 mfg_date = input("enter product mfg date")
                 bar_code = input("enter  product bar code: ")
-                price = int(input("enter product price"))
+                price = float(input("enter product price"))
                 product.insert__product(id,name,p_type,company_name,exp_date,mfg_date,bar_code,price)
             elif choice==10:
                 product.display__all()
             elif choice==11:
-                id = int(input("enter employee id"))
+                id = int(input("enter product id"))
                 product.delete__product(id)
             elif choice==12:
                 id = int(input("enter product id: "))
@@ -112,15 +121,15 @@ def main():
                 exp_date = input("enter product exp date: ")
                 mfg_date = input("enter product mfg date")
                 bar_code = input("enter  product bar code: ")
-                price = int(input("enter product price"))
+                price = float(input("enter product price"))
                 product.insert__product(id, name, p_type, company_name, exp_date, mfg_date, bar_code, price)
             elif choice==13:
                 t_no = int(input("enter transaction no: "))
                 p_name = input("enter product name: ")
                 quantity = int(input("enter quantity : "))
                 cashier_name = input("enter cashier name: ")
-                price = int(input("enter price: "))
-                total_amount = int(input("enter product mfg date"))
+                price = float(input("enter price: "))
+                total_amount = float(input("enter product total amount"))
                 date_time = input("enter  date_time: ")
                 p_id = int(input("enter product id"))
                 c_id = int(input("enter customer id"))
@@ -135,8 +144,8 @@ def main():
                 p_name = input("enter product name: ")
                 quantity = int(input("enter quantity : "))
                 cashier_name = input("enter cashier name: ")
-                price = int(input("enter price: "))
-                total_amount = int(input("enter product mfg date"))
+                price = float(input("enter price: "))
+                total_amount = float(input("enter total amount"))
                 date_time = input("enter  date_time: ")
                 p_id = int(input("enter product id"))
                 c_id = int(input("enter customer id"))
@@ -179,6 +188,26 @@ def main():
                 product_id = int(input("enter product id"))
                 orderlist.insert__order(o_id, order_date, delivery_date, suplier_id, product_id)
             elif choice==25:
+                name = input("enter name")
+                customer.search_customer(name)
+            elif choice==26:
+                orderlist.join()
+            elif choice==27:
+                receipt.join_recipt();
+            elif choice==28:
+                employee.max_salary();
+            elif choice==29:
+                p_id = int(input("enter product id"))
+                p_name = input("enter product name")
+                current_price = float(input("enter current price"))
+                future_price = float(input("enter future price"))
+                profit = input("enter profit null")
+                percentage = input("enter percentage null")
+                status = input("enter status null")
+                shopstatus.insert__shopstatus(p_id,p_name,current_price,future_price,profit,percentage,status)
+            elif choice==30:
+                shopstatus.display__all()
+            elif choice==31:
                 break
             else:
                 print("invalid input")

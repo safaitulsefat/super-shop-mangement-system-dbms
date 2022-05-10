@@ -3,7 +3,7 @@ import mysql.connector as connector
 class Product:
     def __init__(self):
         self.connect = connector.connect(host='localhost', user='root', password='', database='super_shop')
-        query = 'create table if not exists product(product_Id int primary key, product_Name varchar(255), product_type varchar(255), company_name varchar(255),exp_date date,mfg_date date,bar_code varchar(255),price int)'
+        query = 'create table if not exists product(product_Id int primary key, product_Name varchar(255), product_type varchar(255), company_name varchar(255),exp_date date,mfg_date date,bar_code varchar(255),price float)'
         cur = self.connect.cursor()
         cur.execute(query)
         print("table creatd succsesfuly")

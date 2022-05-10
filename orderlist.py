@@ -3,7 +3,7 @@ import mysql.connector as connector
 class Orderlist:
     def __init__(self):
         self.connect = connector.connect(host='localhost', user='root', password='', database='super_shop')
-        query = 'create table if not exists orderlist(orderId int primary key,orderDate date,deliveryDate date,suplierId int,productId int,foreign key(suplierId) references supplier(suplier_Id),foreign key(productId) references product(product_Id)) '
+        query = 'create table if not exists orderlist(orderId int primary key,orderDate date,deliveryDate date,suplierId int,productId int,foreign key(suplierId) references supplier(suplier_Id),foreign key(productId) references product(product_Id) ON DELETE CASCADE) '
         cur = self.connect.cursor()
         cur.execute(query)
         print("table creatd succsesfuly")
@@ -41,4 +41,10 @@ class Orderlist:
         self.connect.commit()
         print("update customer succsessfully")
 
-
+    def join(self):
+        query = 'select orderId,suplier_Name from orderlist right outer join supplier on orderlist.suplierId=supplier.suplier_Id'
+        cur = self.connect.cursor()
+        cur.execute(query)
+        for row in cur:
+            print("order ID: ", row[0])
+            print("sulllier name: ", row[1])

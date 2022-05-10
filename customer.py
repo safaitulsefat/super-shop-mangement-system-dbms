@@ -40,5 +40,14 @@ class Customer:
         cur.execute(query)
         self.connect.commit()
         print("update customer succsessfully")
+    def search_customer(self,name):
+        query = "select name,Address from customer where Name like '{}%'".format(name)
+        cur = self.connect.cursor()
+        cur.execute(query)
+        for row in cur:
+            print("customer name:", row[0])
+            print("customer Address",row[1]);
+
+
 
 

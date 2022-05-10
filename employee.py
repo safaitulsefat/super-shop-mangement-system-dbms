@@ -43,5 +43,13 @@ class Employee:
         cur.execute(query)
         self.connect.commit()
         print("update customer succsessfully")
+    def max_salary(self):
+        query = 'select emp_Name,salary from employee where salary=(select max(salary) from employee)'
+        cur = self.connect.cursor()
+        cur.execute(query)
+        for row in cur:
+            print("employee name:", row[0])
+            print("maximum employee salary:", row[1])
+
 
 
