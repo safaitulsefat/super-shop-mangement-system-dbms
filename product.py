@@ -44,5 +44,27 @@ class Product:
         cur.execute(query)
         self.connect.commit()
         print("update customer succsessfully")
+    def search_rangeOf_price(self,price1,price2):
+         query='select * from product WHERE price BETWEEN {} AND {}'.format(price1,price2)
+         cur = self.connect.cursor()
+         cur.execute(query)
+         for row in cur:
+             print("product ID:", row[0])
+             print("product Name:", row[1])
+             print("product type:", row[2])
+             print("company name ", row[3])
+             print("product exp date ", row[4])
+             print("product mfg date: ", row[5])
+             print("product bar code: ", row[6])
+             print("product price: ", row[7])
 
-
+             print()
+             print()
+    def groupby_product_sum(self):
+        query='select product_name,product_type,sum(price) FROM product GROUP by product_type'
+        cur = self.connect.cursor()
+        cur.execute(query)
+        for row in cur:
+            print("product Name:", row[0])
+            print("product type:", row[1])
+            print("product sum of product:", row[2])

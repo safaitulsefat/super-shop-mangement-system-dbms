@@ -41,7 +41,7 @@ class Orderlist:
         self.connect.commit()
         print("update customer succsessfully")
 
-    def join(self):
+    def orderlist_join(self):
         query = 'select orderId,suplier_Name from orderlist right outer join supplier on orderlist.suplierId=supplier.suplier_Id'
         cur = self.connect.cursor()
         cur.execute(query)

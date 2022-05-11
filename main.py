@@ -44,13 +44,17 @@ def main():
         print("Press 22 to display all: ")
         print("press 23 to delete orderlist: ")
         print("press 24 to update order list")
-        print("press 25 to search")
-        print("press 26 to join: ")
-        print("enter 27 recipt join")
+        print("press 25 to search customer name")
+        print("press 26 to orderlist and supplier right join: ")
+        print("enter 27 to customer and recipt inner join")
         print("enter 28 maximum salary")
         print("enter 29 shop status")
         print("enter 30 display shop status")
-        print("exit")
+        print("enter 31 find range of product price")
+        print("enter 32 sum all amount of product")
+        print("enter 33 groupby product type sum: ")
+        print("enter 34 increase employee salary when selling product properly: ")
+        print("enter 35 exit")
         print()
         try:
             choice = int(input())
@@ -191,7 +195,7 @@ def main():
                 name = input("enter name")
                 customer.search_customer(name)
             elif choice==26:
-                orderlist.join()
+                orderlist.orderlist_join()
             elif choice==27:
                 receipt.join_recipt();
             elif choice==28:
@@ -208,6 +212,18 @@ def main():
             elif choice==30:
                 shopstatus.display__all()
             elif choice==31:
+                price1=float(input("enter price1: "))
+                price2=float(input("enter price2: "))
+                product.search_rangeOf_price(price1,price2)
+            elif choice==32:
+                receipt.sum_of_totalamount()
+            elif choice==33:
+                product.groupby_product_sum()
+            elif choice==34:
+                percent = float(input("enter percentage:"))
+                total_amount = float(input("enter total amount: "))
+                employee.increase_employ_salary(percent,total_amount)
+            elif choice == 35:
                 break
             else:
                 print("invalid input")

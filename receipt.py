@@ -52,4 +52,10 @@ class Receipt:
         for row in cur:
             print("customer name: ", row[0])
             print("chashier name: ", row[1])
+    def sum_of_totalamount(self):
+        query='select sum(total_amount) FROM receipt'
+        cur = self.connect.cursor()
+        cur.execute(query)
+        for row in cur:
+            print("sum of total amount all product: ", row[0])
 

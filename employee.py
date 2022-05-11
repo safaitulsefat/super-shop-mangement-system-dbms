@@ -50,6 +50,11 @@ class Employee:
         for row in cur:
             print("employee name:", row[0])
             print("maximum employee salary:", row[1])
+    def increase_employ_salary(self,percent,total_amount):
+        query='UPDATE employee SET salary = salary +(salary* {})  WHERE emp_name = (SELECT cashier_name FROM receipt WHERE total_amount >= {})'.format(percent,total_amount)
+        cur = self.connect.cursor()
+        cur.execute(query)
+        self.connect.commit()
 
 
 
